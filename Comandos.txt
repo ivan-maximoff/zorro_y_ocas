@@ -1,0 +1,30 @@
+nasm main.asm -f elf64
+nasm validaciones.asm -f elf64
+nasm prints.asm -f elf64
+nasm tablero.asm -f elf64
+nasm auxiliar.asm -f elf64
+nasm data.asm -f elf64
+nasm movimientos.asm -f elf64
+nasm archivo.asm -f elf64
+nasm jugadas.asm -f elf64
+nasm juego.asm -f elf64
+gcc -g main.o archivo.o validaciones.o prints.o tablero.o auxiliar.o data.o movimientos.o jugadas.o juego.o -o main.out -no-pie
+./main.out
+
+debugger
+
+nasm -f elf64 -g -F dwarf -l main.lst -o main.o main.asm
+nasm -f elf64 -g -F dwarf -l validaciones.lst -o validaciones.o validaciones.asm
+nasm -f elf64 -g -F dwarf -l prints.lst -o prints.o prints.asm
+nasm -f elf64 -g -F dwarf -l tablero.lst -o tablero.o tablero.asm
+nasm -f elf64 -g -F dwarf -l auxiliar.lst -o auxiliar.o auxiliar.asm
+nasm -f elf64 -g -F dwarf -l data.lst -o data.o data.asm
+nasm -f elf64 -g -F dwarf -l movimientos.lst -o movimientos.o movimientos.asm
+nasm -f elf64 -g -F dwarf -l archivo.lst -o archivo.o archivo.asm
+nasm -f elf64 -g -F dwarf -l jugadas.lst -o jugadas.o jugadas.asm
+nasm -f elf64 -g -F dwarf -l juego.lst -o juego.o juego.asm
+gcc -g main.o validaciones.o prints.o tablero.o auxiliar.o data.o movimientos.o archivo.o jugadas.o juego.o -o main.out -no-pie
+
+gdb ./main.out
+
+layout regs
